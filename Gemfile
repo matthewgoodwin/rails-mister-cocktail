@@ -1,3 +1,5 @@
+# tell heroku which version of rails to use
+ruby '2.3.1'
 source 'https://rubygems.org'
 
 
