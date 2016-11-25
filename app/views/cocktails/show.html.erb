@@ -10,8 +10,7 @@
     <h3>doses</h3>
     <div>
       <%@cocktail.doses.each do |dose| %>
-        <p>Add <%= dose.description %> of <%= dose.ingredient.name %></p>
-        <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
+        <p>Add <%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %> </p>
         <%= link_to 'delete dose', cocktail_dose_path(@cocktail, dose), method: :delete %>
       <% end  %>
     </div>
