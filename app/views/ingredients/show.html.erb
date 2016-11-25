@@ -1,0 +1,13 @@
+<!-- <h1>Ingredients#show</h1>
+<p>Find me in app/views/ingredients/show.html.erb</p>
+ -->
+
+ <h1>this is <%= @ingredient.name %></h1>
+
+ <p>these are the cocktails you can make with this:</p>
+ <ul>
+ <% @ingredient.cocktails.each do |cocktail| %>
+   <li><%= cocktail.name %></li>
+  <%= link_to 'back to cocktail page', cocktail_path(cocktail)%>
+   <% end %>
+ </ul>

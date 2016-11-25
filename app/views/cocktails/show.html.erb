@@ -1,0 +1,36 @@
+<!-- <h1>Cocktails#show</h1>
+<p>Find me in app/views/cocktails/show.html.erb</p>
+ -->
+
+<div>
+  <h4>cocktail</h4>
+  <h2><%= @cocktail.name %></h2>
+
+  <div>
+    <h3>doses</h3>
+    <div>
+      <%@cocktail.doses.each do |dose| %>
+        <p>Add <%= dose.description %> of <%= dose.ingredient.name %></p>
+        <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %>
+        <%= link_to 'delete dose', cocktail_dose_path(@cocktail, dose), method: :delete %>
+      <% end  %>
+    </div>
+
+    <div>
+      <%= simple_form_for [@cocktail, @dose] do |f| %>
+        <% if @dose.errors.any? %>
+          <% @dose.errors.full_messages.each do |message|%>
+          <p><%=  message%></p>
+          <% end %>
+        <% end %>
+        <%= f.input :description %>
+        <%= f.input :ingredient_id, collection: Ingredient.all%> <!--check schema ask questions about this-->
+        <%= f.submit %>
+      <% end %> <!--end of simple form-->
+    </div> <!--end of form div-->
+
+  </div> <!--end of content div-->
+
+  <%= link_to 'cocktail lists', cocktails_path %>
+</div> <!--end of page div-->
+

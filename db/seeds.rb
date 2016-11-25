@@ -5,3 +5,20 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# require 'open-uri'
+
+Ingredient.destroy_all
+Ingredient.create(name: "lemon")
+Ingredient.create(name: "ice")
+Ingredient.create(name: "mint leaves")
+Ingredient.create(name: "brandy")
+Ingredient.create(name: "cherry")
+Ingredient.create(name: "gin")
+Ingredient.create(name: "rum")
+Ingredient.create(name: "coke")
+Ingredient.create(name: "vodka")
+Ingredient.create(name: "soda")
+Ingredient.create(name: "lime")
+Ingredient.create(name: "whiskey")
+
+# url = http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list

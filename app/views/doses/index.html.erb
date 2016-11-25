@@ -1,0 +1,15 @@
+<h1>Doses#index</h1>
+<p>Find me in app/views/doses/index.html.erb</p>
+<div>
+  <ul class="list-inline">
+    <% @doses.each do |dose| %>
+    <li><%= dose.description %></li>
+    <!--<li><%= cocktail.id %></li>-->
+    <li><%= link_to "Delete", doses_destroy_path(dose),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %></li>
+      <br>
+    <% end %>
+  </ul>
+<%=  link_to 'create new dose', new_cocktail_dose_path %>
+</div>
