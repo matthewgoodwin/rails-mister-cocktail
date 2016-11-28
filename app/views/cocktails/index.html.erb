@@ -1,20 +1,30 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
+<!-- <h1>Cocktails#index</h1>
+<p>Find me in app/views/cocktails/index.html.erb</p> -->
 
 
 
-<div>
-  <ul class="list-inline">
-    <% @cocktails.each do |cocktail| %>
-    <h3><%= link_to  cocktail.name , cocktail_path(cocktail) %></h3>
-    <!--<li><%= cocktail.id %></li>-->
-    <li><%= link_to 'add dose', cocktail_path(cocktail) %></li>
-    <li><%= link_to 'edit', edit_cocktail_path(cocktail) %></li>
-    <li><%= link_to "Delete", cocktail_path(cocktail),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %></li>
-      <br>
-    <% end %>
-  </ul>
-<%=  link_to 'create new cocktail', new_cocktail_path %>
-</div>
+<div class="card-wrapper">
+<div class="container">
+  <div class="row">
+  <% @cocktails.each do |cocktail| %>
+    <div class="col-sm-6">
+      <div class="card">
+        <%= cl_image_tag cocktail.photo, height: 200, width: 300, crop: :fill, class:"img-center" %>
+        <div class="card-block text-center">
+          <h4 class="card-title"><%= link_to  cocktail.name , cocktail_path(cocktail) %></h4>
+          <ul class="list-inline no-style">
+              <li><%= link_to 'add dose', cocktail_path(cocktail) %></li>
+              <li><%= link_to 'edit', edit_cocktail_path(cocktail) %></li>
+              <li><%= link_to "Delete", cocktail_path(cocktail),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %></li>
+          </ul>
+        </div><!-- end of card-block-->
+      </div><!--end of card class-->
+    </div> <!--end of col-sm-6-->
+  <% end %>
+  </div> <!--end of row-->
+  <p class="text-center"><%=  link_to 'create new cocktail', new_cocktail_path %></p>
+</div> <!--end of conteiner-->
+
+</div><!--end of card-wrapper-->

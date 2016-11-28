@@ -1,35 +1,52 @@
 <!-- <h1>Cocktails#show</h1>
 <p>Find me in app/views/cocktails/show.html.erb</p>
  -->
-
-<div>
-  <h4>cocktail</h4>
-  <h2><%= @cocktail.name %></h2>
-
-  <div>
-    <h3>doses</h3>
-    <div>
-      <%@cocktail.doses.each do |dose| %>
-        <p>Add <%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %> </p>
-        <%= link_to 'delete dose', cocktail_dose_path(@cocktail, dose), method: :delete %>
-      <% end  %>
+<div class="container">
+  <div class="row">
+      <div class="card"
+          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path @cocktail.photo, height: 300, width: 400, crop: :fill %>')">
     </div>
+  </div>
+</div>
 
-    <div>
-      <%= simple_form_for [@cocktail, @dose] do |f| %>
-        <% if @dose.errors.any? %>
-          <% @dose.errors.full_messages.each do |message|%>
-          <p><%=  message%></p>
-          <% end %>
-        <% end %>
-        <%= f.input :description %>
-        <%= f.input :ingredient_id, collection: Ingredient.all%> <!--check schema ask questions about this-->
-        <%= f.submit %>
-      <% end %> <!--end of simple form-->
-    </div> <!--end of form div-->
 
-  </div> <!--end of content div-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4  border">
+      <h2 class="text-center">COCKTAIL</h2>
+      <hr>
+      <div class="card">
+        <%= cl_image_tag @cocktail.photo, height: 200, width: 300, crop: :fill, class:"img-center" %>
+        <div class="card-block">
+          <h3 class="card-title text-center"><%= @cocktail.name %></h3>
+          <p class="card-text text-center"> </p>
+          <div><!--cocktail dose-->
+            <% @cocktail.doses.each do |dose| %>
+            <p> Add <%= dose.description %> of <%= link_to dose.ingredient.name, ingredient_path(dose.ingredient) %> <%= link_to 'delete dose', cocktail_dose_path(@cocktail, dose), method: :delete, class: "btn btn-default"%></p>
 
-  <%= link_to 'cocktail lists', cocktails_path %>
-</div> <!--end of page div-->
+            <% end  %>
+          </div><!--end of cocktial dose-->
 
+        <div><!--content div-->
+          <div><!--form div-->
+          <%= simple_form_for [@cocktail, @dose] do |f| %>
+          <% if @dose.errors.any? %>
+            <% @dose.errors.full_messages.each do |message|%>
+            <p><%= message %></p>
+            <% end %> <!--end of message do-->
+          <% end %> <!--end of if statemnt-->
+          <%= f.input :description %>
+          <%= f.input :ingredient_id, collection: Ingredient.all%> <!--check schema ask questions about this-->
+          <%= f.submit %>
+          <% end %> <!--end of simple form do-->
+            <br>
+          <%= link_to 'cocktail lists', cocktails_path, class: "btn btn-primary" %>
+          </div> <!--end of form div-->
+        </div> <!--end of content div-->
+
+        </div><!--end of card block-->
+      </div><!-- end of card-->
+    </div><!--end of offset-->
+  </div><!--end of row-->
+</div><!--end of container-->

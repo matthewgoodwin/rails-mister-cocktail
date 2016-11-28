@@ -2,8 +2,10 @@
 ruby '2.3.1'
 source 'https://rubygems.org'
 
-# for security
+# add first ..for security then, bundle install, bundle binstubs figaro, figaro install, spring stop
 gem 'figaro'
+# add second.. for images, then, bundle install
+gem 'cloudinary', '1.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 # Use postgresql as the database for Active Record
@@ -35,6 +37,8 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# allows the user to upload thier own images
+gem 'carrierwave'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
