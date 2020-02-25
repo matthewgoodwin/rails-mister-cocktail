@@ -1,3 +1,4 @@
+source 'https://rubygems.org'
 # tell heroku which version of rails to use
 ruby '2.6.5'
 
