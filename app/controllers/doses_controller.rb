@@ -1,6 +1,7 @@
 class DosesController < ApplicationController
   before_action :find_dose, only: [ :show, :destroy ]
   before_action :find_cocktail, only: [ :new, :create, :show ]
+  before_action :dose_params, only: [:create]
 
   def new
     # ^ this is not being used
