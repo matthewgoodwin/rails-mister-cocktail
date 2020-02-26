@@ -17,7 +17,7 @@
       <h2 class="text-center">COCKTAIL</h2>
       <hr>
       <div class="card">
-        <%= cl_image_tag @cocktail.photo, height: 200, width: 300, crop: :fill, class:"img-center" %>
+        <%= cl_image_tag @cocktail.photo, height: 200, width: 300, crop: :fill, class:"img-center" if @cocktail.photo.present?%>
         <div class="card-block">
           <h3 class="card-title text-center"><%= @cocktail.name %></h3>
           <p class="card-text text-center"> </p>
